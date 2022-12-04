@@ -24,3 +24,4 @@ const client = new Client({
 client.login(process.env.TOKEN);
 
 loader('../events/', client);
+loader('../mods/', client);
