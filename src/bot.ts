@@ -1,10 +1,15 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
-import ready from './events/ready';
-import interactionCreate from './events/interactionCreate'
+import { Logger } from "./core/logger";
+import loader from './core/loader';
+import { exit } from "process";
+require('dotenv').config()
 
-import CommandHandler from './core/kevin'
+if(!process.env.TOKEN) {
+  Logger.get('LEXBOT').error('No Token specified! Bot is unable to start.');
+  exit(1);
+}
 
-console.log("Bot is starting...");
+Logger.get('LEXBOT').info("Bot is starting...");
 
 const client = new Client({
   intents: [
@@ -15,7 +20,7 @@ const client = new Client({
   partials: [Partials.Channel],
 });
 
-client.login("");
 
-ready(client);
-interactionCreate(client);
+client.login(process.env.TOKEN);
+
+loader('../events/', client);

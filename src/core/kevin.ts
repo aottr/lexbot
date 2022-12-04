@@ -86,7 +86,7 @@ export default class Kevin {
 
   /**
    * Recursive inner function to call the mods from the given directory
-   * @param {string} dir
+   * @param {string} path
    * @returns {number} sum of loaded mods
    */
   private async loadRecursive(path: string) : Promise<number> {

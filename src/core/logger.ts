@@ -58,3 +58,4 @@ export class Logger {
     return new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
   }
 }
+export default Logger;

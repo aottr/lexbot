@@ -1,2 +1,3 @@
 .pnp.*
 lexbot.sublime-*
+.env
