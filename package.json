@@ -5,15 +5,16 @@
   "main": "src/bot.js",
   "scripts": {
     "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
-    "start": "ts-node src/bot.ts",
-    "debug": "nodemon src/bot.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/bot.js",
+    "debug": "nodemon src/bot.ts"
   },
   "author": "Alex Ottr <alex@ottr.one>",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.7.1",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.7.5"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",

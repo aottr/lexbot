@@ -3,6 +3,7 @@ import { join } from 'path';
 import { ApplicationCommandData, Client, CommandInteraction } from 'discord.js';
 import { Command } from '../interfaces/command';
 import { Logger } from './logger';
+import { NullClient } from './errors';
 
 /**
  *  Command handler to autoload commands
@@ -41,7 +42,7 @@ export default class Kevin {
   public static getInstance(client: Client | null = null, prefix: string = '!'): Kevin {
 
     if (!Kevin.instance) {
-      if (!client) throw new Error("Client can not be null when creating a new instance.");
+      if (!client) throw new NullClient();
       Kevin.instance = new Kevin(client, prefix);
     }
     return Kevin.instance;

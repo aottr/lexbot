@@ -48,7 +48,7 @@ export class Logger {
   }
 
   private log(prefix: string, message: string) {
-    let output = `[${this.name}] ${prefix}`;
+    let output = `${prefix} [${this.name}]`;
     if (this.printTime) output += ` \x1b[36m${this.time()}\x1b[0m`;
 
     console.log(output, message);

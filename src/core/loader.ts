@@ -4,15 +4,20 @@ import { join } from 'path';
 import Logger from './logger';
 
 export default async (path: string, client: Client) => {
+  try {
+    const files: string[] = readdirSync(join(__dirname, path)).filter(
+      (file) => file.endsWith('.js') || file.endsWith('.ts')
+    );
 
-  const files: string[] = readdirSync(join(__dirname, path)).filter(
-    (file) => file.endsWith('.js') || file.endsWith('.ts')
-  );
+    for (const file of files) {
+      const { default: loadable } = await import(join(__dirname, path, file));
+      loadable(client);
+    }
 
-  for (const file of files) {
-    const { default: loadable } = await import(join(__dirname, path, file));
-    loadable(client);
+    Logger.get('Loader').info(`Loaded ${files.length} files from ${path}`);
   }
-
-  Logger.get('Loader').info(`Loaded ${files.length} files from ${path}`);
+  catch (err) {
+    if (err instanceof Error)
+      Logger.get('Loader').error(err.message);
+  }
 };
