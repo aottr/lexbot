@@ -2,3 +2,4 @@
 lexbot.sublime-*
 .env
 dist
+node_modules
