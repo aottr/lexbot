@@ -7,7 +7,7 @@ import { MissingDiscordToken } from "./core/errors";
 require('dotenv').config()
 
 
-if(!process.env.TOKEN) {
+if (!process.env.TOKEN) {
   Logger.get('LEXBOT').error(new MissingDiscordToken().message);
   exit(1);
 }

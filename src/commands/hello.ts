@@ -1,18 +1,13 @@
-import { CommandInteraction, Client, ApplicationCommandType, Constants, PermissionFlagsBits, ApplicationCommandOptionData, ApplicationCommandOptionType } from "discord.js";
+import { CommandInteraction, Client, ApplicationCommandType, PermissionFlagsBits, ApplicationCommandOptionType } from "discord.js";
 import { Command } from "../interfaces/command";
 
 export = {
-  name: "hellowelt",
+  name: "hello",
   description: "Returns a greeting",
   defaultMemberPermissions: PermissionFlagsBits.KickMembers | PermissionFlagsBits.BanMembers,
   type: ApplicationCommandType.ChatInput,
   cooldown: 5000,
-  options: [{
-            name: 'limit',
-            description: 'Number of Otters to fetch',
-            required: false,
-            type: ApplicationCommandOptionType.Number,
-        } as ApplicationCommandOptionData,],
+  options: [],
   run: async (client: Client, interaction: CommandInteraction) => {
     const content = "Hello there!";
 
