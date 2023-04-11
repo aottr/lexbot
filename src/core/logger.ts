@@ -1,16 +1,16 @@
 /**
  *  Basic logger class with singleton model
  *
- * @author AlexOttr <alex@ottr.one>
- * @version 1.0
+ * @author AlexOttr <alex@tailbyte.org>
+ * @version 1.1
  *
  * @exports Logger
  */
 export class Logger {
 
   private static registered: Map<string, Logger> = new Map<string, Logger>();
-  private name: string;
-  private printTime: boolean;
+  private readonly name: string;
+  private readonly printTime: boolean;
 
   private constructor(name: string, printTime: boolean) {
     this.name = name;
